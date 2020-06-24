@@ -3,10 +3,8 @@
 #include <vector>
 #include <GL/freeglut.h>
 
-using namespace std;
-
-int un[1000];
-int idx;
+char un[1000];
+char idx;
 
 void display() {
 
@@ -20,12 +18,11 @@ void myMouse(int mouseX, int mouseY)//harus di klik
 }
 void myKeyboard(unsigned char key, int mouseX, int mouseY)
 {
-	int ukur = sizeof(un) / sizeof(un[0]);
-	int search = key;
-	auto cek = find(un, un + ukur, key);
+	char ukur = sizeof(un) / sizeof(un[0]);
+	auto cek = std::find(un, un + ukur, key);
 	std::cout << key << " ";
 
-	if (cek == end(un)) {
+	if (cek == std::end(un)) {
 		un[idx] = key;
 		idx++;
 	}
@@ -34,13 +31,12 @@ void myKeyboard(unsigned char key, int mouseX, int mouseY)
 void myKeyboardup(unsigned char key, int mouseX, int mouseY)
 {
 	system("cls");
-	int ukur = sizeof(un) / sizeof(un[0]);
-	int search = key;
-	auto cek = find(un, un + ukur, key);
+	char ukur = sizeof(un) / sizeof(un[0]);
+	auto cek = std::find(un, un + ukur, key);
 	std::cout << key << " ";
 
-	if (cek == end(un)) {
-		un[distance(un,cek)] = 0;
+	if (cek == std:: end(un)) {
+		un[std::distance(un,cek)] = 0;
 		idx++;
 	}
 
